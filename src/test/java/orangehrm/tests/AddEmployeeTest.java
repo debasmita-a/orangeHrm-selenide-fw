@@ -9,7 +9,8 @@ class AddEmployeeTest {
 	@Test
 	void testAddEmployee() {
 		open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-		new LoginPage().loginToApp();
+		new LoginPage().loginToApp().getLeftMenuComponent()
+		                                 .selectAMenuFromLeftBar("PIM");
 	}
 
 }
