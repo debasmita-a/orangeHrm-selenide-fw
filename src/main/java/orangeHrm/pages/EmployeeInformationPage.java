@@ -12,14 +12,23 @@ public class EmployeeInformationPage {
 	private static final SelenideElement LAST_NAME = $(byName("lastName"));
 	private static final SelenideElement MIDDLE_NAME = $(byName("middleName"));
 	private static final SelenideElement SAVE_BUTTON = $(byAttribute("type","submit"));
-	
-	public void addEmployee() {
-		ADD_EMPLOYEE_BUTTON.shouldBe(enabled).click();
-		FIRST_NAME.shouldBe(visible).setValue("FirstName");
-		LAST_NAME.shouldBe(visible).setValue("LastName");
-		MIDDLE_NAME.shouldBe(visible).setValue("Middle");
+	private static final SelenideElement IMAGE = $(byXpath("//input[@type='file']"));
+	private static final SelenideElement SUCCESS_MESSAGE = $$(byText("Success")).first();
 		
+	
+	public EmployeeInformationPage addNewEmployee() {
+		ADD_EMPLOYEE_BUTTON.shouldBe(enabled).click();
+		FIRST_NAME.shouldBe(visible).setValue("abc");
+		LAST_NAME.shouldBe(visible).setValue("efg");
+		MIDDLE_NAME.shouldBe(visible).setValue("dk");
+		IMAGE.shouldBe(enabled).uploadFromClasspath("testimg.jpeg");
 		SAVE_BUTTON.shouldBe(enabled).click();
+		
+		return this;
+	}
+	
+	public void checkWhetherNewEmployeeIsCreated() {
+		SUCCESS_MESSAGE.shouldHave(visible, text("Success"));
 	}
 
 }
