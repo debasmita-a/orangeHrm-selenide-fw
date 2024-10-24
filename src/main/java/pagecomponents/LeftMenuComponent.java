@@ -6,8 +6,8 @@ import static com.codeborne.selenide.Condition.*;
 
 public class LeftMenuComponent {
 	
-	public void selectAMenuFromLeftBar(String menuName) {
-		$(byText(menuName)).shouldBe(enabled).click();
+	public void selectAMenuFromLeftBar(LeftMenuComponentType menuType) {
+		$(byText(menuType.getMenuName())).shouldBe(enabled).click();
 	}
 	
 }

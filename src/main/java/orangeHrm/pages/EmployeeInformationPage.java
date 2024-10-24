@@ -2,6 +2,9 @@ package orangeHrm.pages;
 
 import static com.codeborne.selenide.Selectors.*;
 import com.codeborne.selenide.SelenideElement;
+
+import orangeHrm.entities.EmployeeDetails;
+
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 
@@ -16,12 +19,13 @@ public class EmployeeInformationPage {
 	private static final SelenideElement SUCCESS_MESSAGE = $$(byText("Success")).first();
 		
 	
-	public EmployeeInformationPage addNewEmployee() {
+	public EmployeeInformationPage addNewEmployee(EmployeeDetails employee) {
+		
 		ADD_EMPLOYEE_BUTTON.shouldBe(enabled).click();
-		FIRST_NAME.shouldBe(visible).setValue("abc");
-		LAST_NAME.shouldBe(visible).setValue("efg");
-		MIDDLE_NAME.shouldBe(visible).setValue("dk");
-		IMAGE.shouldBe(enabled).uploadFromClasspath("testimg.jpeg");
+		FIRST_NAME.shouldBe(visible).setValue(employee.getFirstName());
+		LAST_NAME.shouldBe(visible).setValue(employee.getLastName());
+		MIDDLE_NAME.shouldBe(visible).setValue(employee.getMiddleName());
+		IMAGE.shouldBe(enabled).uploadFromClasspath("images/testimg.jpeg");
 		SAVE_BUTTON.shouldBe(enabled).click();
 		
 		return this;
