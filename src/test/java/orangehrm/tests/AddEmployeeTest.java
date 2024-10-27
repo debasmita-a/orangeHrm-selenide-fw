@@ -6,20 +6,21 @@ import orangeHrm.entities.EmployeeDetails;
 import orangeHrm.entities.LoginDetails;
 import orangeHrm.pages.EmployeeInformationPage;
 import orangeHrm.pages.LoginPage;
-import pagecomponents.LeftMenuComponentType;
+import static pagecomponents.LeftMenuComponentType.*;
 import testdata.EmployeeTestData;
 import testdata.LoginTestDetails;
 
 class AddEmployeeTest {
 
-	EmployeeDetails employee = EmployeeTestData.getRandomEmployeeDetails();
-	LoginDetails login = LoginTestDetails.getValidLoginTestData();
+	EmployeeDetails employeeDetails = EmployeeTestData.getRandomEmployeeDetails();
+	LoginDetails loginDetails = LoginTestDetails.getValidLoginTestData();
 
 	@Test
 	void testAddEmployee() throws InterruptedException {
-		LoginPage.getInstance().loginToApp(login).getLeftMenuComponent().selectAMenuFromLeftBar(LeftMenuComponentType.PIM);
+		
+		LoginPage.getInstance().loginToApp(loginDetails).getLeftMenuComponent().selectAMenuFromLeftBar(PIM);
 
-		new EmployeeInformationPage().addNewEmployee(employee).checkWhetherNewEmployeeIsCreated();
+		new EmployeeInformationPage().addNewEmployee(employeeDetails).checkWhetherNewEmployeeIsCreated();
 
 		Thread.sleep(5000);
 	}

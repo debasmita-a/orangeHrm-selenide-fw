@@ -21,9 +21,9 @@ public final class LoginPage {
 		return new LoginPage();
 	}
 	
-	public HomePage loginToApp(LoginDetails login) {
-		USERNAME.shouldBe(visible).setValue(login.getUserName());
-		PASSWORD.shouldBe(visible).setValue(login.getPassword());
+	public HomePage loginToApp(LoginDetails loginDetails) {
+		USERNAME.shouldBe(visible).setValue(loginDetails.getUserName());
+		PASSWORD.shouldBe(visible).setValue(loginDetails.getPassword());
 		LOGIN_BTN.shouldBe(enabled).click();
 		
 		return new HomePage();

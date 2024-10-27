@@ -13,6 +13,7 @@ public final class LoginTestDetails {
 	}
 	
 	public static LoginDetails getValidLoginTestData() {
+		
 		return FACTORY.manufacturePojo(LoginDetails.class);	
 	}
 }
