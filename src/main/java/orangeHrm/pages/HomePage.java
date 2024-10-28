@@ -13,4 +13,5 @@ public class HomePage {
 	public LeftMenuComponent getLeftMenuComponent() {
 		return leftMenuComponent;
 	}
+
 }

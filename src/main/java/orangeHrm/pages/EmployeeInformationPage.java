@@ -25,7 +25,7 @@ public class EmployeeInformationPage {
 		FIRST_NAME.shouldBe(visible).setValue(employee.getFirstName());
 		LAST_NAME.shouldBe(visible).setValue(employee.getLastName());
 		MIDDLE_NAME.shouldBe(visible).setValue(employee.getMiddleName());
-		IMAGE.shouldBe(enabled).uploadFromClasspath("images/testimg.jpeg");
+		IMAGE.shouldBe(enabled).uploadFromClasspath(employee.getProfilePicturePath());
 		SAVE_BUTTON.shouldBe(enabled).click();
 		
 		return this;

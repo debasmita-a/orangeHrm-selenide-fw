@@ -1,28 +1,27 @@
 package orangehrm.tests;
 
+import static pagecomponents.LeftMenuComponentType.PIM;
+
 import org.junit.jupiter.api.Test;
 
+import base.TestSetup;
 import orangeHrm.entities.EmployeeDetails;
 import orangeHrm.entities.LoginDetails;
-import orangeHrm.pages.EmployeeInformationPage;
 import orangeHrm.pages.LoginPage;
-import static pagecomponents.LeftMenuComponentType.*;
 import testdata.EmployeeTestData;
 import testdata.LoginTestDetails;
 
-class AddEmployeeTest {
+class AddEmployeeTest extends TestSetup{
 
-	EmployeeDetails employeeDetails = EmployeeTestData.getRandomEmployeeDetails();
-	LoginDetails loginDetails = LoginTestDetails.getValidLoginTestData();
+	private final EmployeeDetails employeeDetails = EmployeeTestData.getRandomEmployeeDetails();
+	private final LoginDetails loginDetails = LoginTestDetails.getValidLoginTestData();
 
 	@Test
 	void testAddEmployee() throws InterruptedException {
 		
-		LoginPage.getInstance().loginToApp(loginDetails).getLeftMenuComponent().selectAMenuFromLeftBar(PIM);
+		LoginPage.getInstance().loginToApp(loginDetails).getLeftMenuComponent().selectAMenuFromLeftBar(PIM).navigateToEmployeeInfoPage()
+		.addNewEmployee(employeeDetails).checkWhetherNewEmployeeIsCreated();
 
-		new EmployeeInformationPage().addNewEmployee(employeeDetails).checkWhetherNewEmployeeIsCreated();
-
-		Thread.sleep(5000);
 	}
 
 }
